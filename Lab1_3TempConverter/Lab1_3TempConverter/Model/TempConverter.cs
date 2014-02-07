@@ -20,7 +20,7 @@ namespace Lab1_3TempConverter.Model
         {
             int newtemp;
 
-            newtemp = Convert.ToInt32((tempF - 32) * 5 / 9);
+            newtemp = Convert.ToInt32(Math.Round((tempF - 32) * 5d / 9));
 
             return newtemp;
         }

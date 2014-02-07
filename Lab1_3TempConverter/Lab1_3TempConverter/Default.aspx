@@ -28,15 +28,19 @@
 
         
         <asp:Label CssClass="left" ID="Label4" runat="server" Text="Typ av konventering"></asp:Label>
-        <asp:RadioButton CssClass="left" ID="CelciuisRadioButton" runat="server" Text="Celcius till fahrenheit" GroupName="check" />
+        <asp:RadioButton CssClass="left" ID="CelciuisRadioButton" runat="server" Text="Celcius till fahrenheit" GroupName="check" Checked="True" />
         <asp:RadioButton CssClass="left" ID="FahrenheitRadioButton" runat="server" Text="Fahrenheit till celcius" GroupName="check" />
 
         <asp:Button CssClass="left" ID="OkButton" runat="server" Text="Konventera" OnClick="OkButton_Click" />
-        <asp:ValidationSummary CssClass="left" ID="ValidationSummary1" runat="server" DisplayMode="List" HeaderText="Fel inträffade åtgärda följande fel:" />
+        <asp:ValidationSummary CssClass="leftE" ID="ValidationSummary1" runat="server" DisplayMode="List" HeaderText="Fel inträffade åtgärda följande fel:" />
     </div>
     <div>
 
         <asp:Table ID="TempTable" runat="server" Visible="false">
+            <asp:TableHeaderRow>
+                <asp:TableHeaderCell ID="First">&deg;C</asp:TableHeaderCell>
+                <asp:TableHeaderCell ID="Second">&deg;F</asp:TableHeaderCell>
+            </asp:TableHeaderRow>
         </asp:Table>
 
     </div>

@@ -11,69 +11,47 @@ namespace Lab1_3TempConverter
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (FahrenheitRadioButton.Checked != true)
-            {
-                CelciuisRadioButton.Checked = true;
-            }
         }
 
         protected void OkButton_Click(object sender, EventArgs e)
         {
-            if (IsValid == true)
+            if (IsValid)
             {
                 int startTemp, stopTemp, rateTemp;
                 startTemp = int.Parse(StartTextBox.Text);
                 stopTemp = int.Parse(EndTextBox.Text);
                 rateTemp = int.Parse(RateTextBox.Text);
 
-                TableCell tCell = new TableCell();
-                TableRow tRow = new TableRow();
-                if (CelciuisRadioButton.Checked == true)
+                if (FahrenheitRadioButton.Checked)
                 {
-                    tCell.Text = "C";
-                    tRow.Cells.Add(tCell);
-                    tCell = new TableCell();
-                    tCell.Text = "F";
-                    tRow.Cells.Add(tCell);
-                    TempTable.Rows.Add(tRow);
+                    First.Text = "°F";
+                    Second.Text = "°C";
                 }
-                else
-                {
-                    tCell.Text = "F";
-                    tRow.Cells.Add(tCell);
-                    tCell = new TableCell();
-                    tCell.Text = "C";
-                    tRow.Cells.Add(tCell);
-                    TempTable.Rows.Add(tRow);
-                }
-                while(startTemp <= stopTemp)
+
+                TableRow tRow;
+                TableCell tCell;
+
+                for (int temp = 0; temp <= startTemp; temp += rateTemp)
                 {
                     tRow = new TableRow();
                     tCell = new TableCell();
-                    tCell.Text = Convert.ToString(startTemp);
+                    tCell.Text = temp.ToString();
                     tRow.Cells.Add(tCell);
                     tCell = new TableCell();
 
                     if(CelciuisRadioButton.Checked == true)
                     {
-                        tCell.Text = Convert.ToString(Model.TempConverter.CelciusToFahrenheit(startTemp));
+                        tCell.Text = Model.TempConverter.CelciusToFahrenheit(temp).ToString();
                     }
                     else
                     {
-                        tCell.Text = Convert.ToString(Model.TempConverter.FahrenheitToCelcius(startTemp));
+                        tCell.Text = Model.TempConverter.FahrenheitToCelcius(temp).ToString();
                     }
                     tRow.Cells.Add(tCell);
                     TempTable.Rows.Add(tRow);
-                    startTemp += rateTemp;
                 }
 
-
-
                 TempTable.Visible = true;
-
-
-
- 
             }
         }
     }

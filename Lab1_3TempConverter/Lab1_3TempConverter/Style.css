@@ -9,4 +9,19 @@
      clear:left;
      float:left;
      color:red;
+     font-weight:bold;
+}
+#TempTable {
+    border: 1px solid black;
+    width:200px;
+    border-collapse:collapse;
+
+}
+td
+{
+border: 1px solid black;
+}
+td {
+    text-align:center;
+    padding:5px;
 }
